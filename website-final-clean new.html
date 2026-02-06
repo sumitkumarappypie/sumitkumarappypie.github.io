@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Premium Business Website</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+   <style>
+    div#top-logo-container {
+    display: none;
+}
+        :root {
+            --gradient-1: #667eea;
+            --gradient-2: #764ba2;
+            --gradient-3: #f093fb;
+            --gradient-4: #f5576c;
+            --gradient-5: #fca44a;
+            --primary-dark: #0a0a0a;
+            --accent-gold: #c9a967;
+            --white: #ffffff;
+            --light: #fafafa;
+            --gray: #6b7280;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            background: var(--white);
+            color: var(--primary-dark);
+        }
+
+        .page-section {
+            display: none;
+        }
+        .page-section.active {
+            display: block;
+        }
+.claim-btn {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    color: #000000;
+    padding: 14px 32px;
+    border-radius: 100px;
+    background-color: #ebffb1a1;
+    border: 1px solid #ade900a6;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    z-index: 10000;
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+    transition: all 0.3s ease;
+    background: #f58c89 !important;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+        .claim-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Logo in Top Left - with minimal fallback */
+     .top-logo {
+    position: fixed;
+    top: 13px;
+    left: 40px;
+    z-index: 1001;
+    width: 90px;
+    height: 90px;
+    justify-content: center;
+   
+}
+
+
+        .top-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 8px;
+        }
+
+        /* Minimal logo fallback - elegant initials */
+        .logo-fallback {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--gradient-1) 0%, var(--gradient-4) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            padding: 15px 30px;
+            border-radius: 100px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 35px;
+        }
+
+        nav a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--white);
+        }
+
+        /* ==========================================
+           ENHANCED GRADIENT FIRST FOLD
+        ========================================== */
+
+      .hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background: linear-gradient(135deg, var(--gradient-1) 0%, #764ba230 25%, var(--gradient-3) 50%, var(--gradient-4) 75%, var(--gradient-5) 100%); */
+    padding: 140px 40px 100px;
+    /* position: relative; */
+    /* overflow: hidden; */
+    background: radial-gradient(42.4% 36.95% at 50% 50%, rgba(250, 249, 247, 0.70) 0%, rgba(250, 249, 247, 0.00) 100%), radial-gradient(97.22% 78.13% at 50% -17.36%, #5DB3CF 22.39%, rgba(145, 201, 220, 0.56) 58.43%, rgba(250, 249, 247, 0.00) 85.73%), radial-gradient(79.49% 72.21% at 50% 0%, #8FC6D9 0%, rgba(151, 216, 238, 0.00) 100%), linear-gradient(180deg, #22C9FF -26.16%, #FAF9F7 23.98%);
+}
+
+       
+
+        @keyframes gradientShift {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: translateX(20px) scale(1.05);
+            }
+        }
+
+        /* Floating gradient orbs */
+        .gradient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.6;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.8) 0%, transparent 70%);
+            top: -10%;
+            right: -10%;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(245, 87, 108, 0.6) 0%, transparent 70%);
+            bottom: -15%;
+            left: -5%;
+            animation-delay: 5s;
+        }
+
+        .orb-3 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(240, 147, 251, 0.7) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(30px, -30px) scale(1.1);
+            }
+
+            66% {
+                transform: translate(-20px, 20px) scale(0.9);
+            }
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Enhanced headline - Soft, soothing, highly visible */
+        .hero-value-prop {
+            font-size: clamp(3.5rem, 9vw, 8rem);
+            font-weight: 900;
+            line-height: 1.05;
+            margin-bottom: 40px;
+            letter-spacing: -0.04em;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        /* All parts of "Transform Your" - Pure white with strong shadow */
+        .hero-value-prop .accent,
+        .hero-value-prop .your {
+            color: #FFFFFF;
+            font-weight: 800;
+            display: inline-block;
+        }
+
+        .hero-value-prop .your {
+            margin-left: 0.3em;
+        }
+
+    
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Subheadline with enhanced readability */
+        .hero-subheadline {
+            font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+            color: rgba(255, 255, 255, 1);
+            max-width: 850px;
+            margin: 0 auto 24px;
+            line-height: 1.7;
+            font-weight: 400;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+           
+        }
+
+        .hero-business-name {
+            font-weight: 800;
+            color: #000000;
+            display: block;
+            font-size: 1.4em;
+            margin-bottom: 20px;
+  
+        }
+
+        /* Description text - High contrast white */
+        #hero-description {
+            color: #000;
+          
+        }
+
+        /* Additional info section - HIDDEN */
+        .hero-info {
+            display: none;
+        }
+
+        /* CTA Buttons */
+        .hero-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 80px;
+            animation: fadeInUp 0.8s ease-out 0.8s both;
+        }
+
+      .btn-primary {
+    padding: 18px 48px;
+    background: #ff641e;
+    color: #ffffff;
+    border: none;
+    border-radius: 100px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+        }
+
+       .btn-secondary {
+    padding: 18px 48px;
+    background: #ffffff;
+    color: #000000;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 100px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    backdrop-filter: blur(10px);
+}
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Trust Indicators */
+        .hero-trust {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            animation: fadeInUp 0.8s ease-out 1s both;
+        }
+
+        .trust-item {
+            text-align: center;
+        }
+.trust-number {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #ff641e;
+    margin-bottom: 8px;
+    line-height: 1;
+}
+
+       .trust-label {
+    font-size: 0.95rem;
+    color: rgb(0 0 0 / 95%);
+    font-weight: 500;
+}
+
+        /* ==========================================
+           SYNCED GRADIENT COLOR SCHEMES
+        ========================================== */
+
+        .services-section {
+            padding: 100px 30px;
+            background: linear-gradient(180deg, #fafafa 0%, #f5f0ff 100%);
+        }
+
+        .page-header {
+            padding: 180px 30px 80px;
+           background: radial-gradient(42.4% 36.95% at 50% 50%, rgba(250, 249, 247, 0.70) 0%, rgba(250, 249, 247, 0.00) 100%), radial-gradient(97.22% 78.13% at 50% -17.36%, #5DB3CF 22.39%, rgba(145, 201, 220, 0.56) 58.43%, rgba(250, 249, 247, 0.00) 85.73%), radial-gradient(79.49% 72.21% at 50% 0%, #8FC6D9 0%, rgba(151, 216, 238, 0.00) 100%), linear-gradient(180deg, #22C9FF -26.16%, #FAF9F7 23.98%);
+            color: #000;
+            text-align: center;
+        }
+
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .page-subtitle {
+            font-size: 1.3rem;
+            color: #000;
+            max-width: 700px;
+            margin: 0 auto;
+
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 50px 40px;
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.1);
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.15);
+            border-color: var(--gradient-1);
+        }
+
+        .service-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--gradient-1) 0%, var(--gradient-3) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .service-description {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--gray);
+            margin-bottom: 25px;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .service-features li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #4a5568;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gradient-1);
+            font-weight: bold;
+        }
+
+        .service-cta {
+            display: inline-block;
+            padding: 15px 35px;
+            background: linear-gradient(135deg, var(--gradient-1) 0%, var(--gradient-5) 100%);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .service-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .testimonials-section {
+            padding: 100px 30px;
+          
+            color: white;
+        }
+
+        .testimonials-section .page-title {
+            color: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 45px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            transition: 0.4s;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .stars {
+            color: var(--gradient-5);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #4a5568;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--gradient-1) 0%, var(--gradient-4) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 1.05rem;
+        }
+
+        .testimonial-role {
+            font-size: 0.9rem;
+            color: #9ca3af;
+            margin-top: 5px;
+        }
+
+        .contact-section {
+            padding: 100px 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: linear-gradient(180deg, #ffffff 0%, #f5f0ff 100%);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, var(--gradient-1) 0%, var(--gradient-3) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .info-item {
+            margin-bottom: 35px;
+            padding: 25px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.08);
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .info-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gradient-1);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .info-value {
+            font-size: 1.1rem;
+            color: var(--primary-dark);
+            line-height: 1.6;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary-dark);
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid rgba(102, 126, 234, 0.2);
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--gradient-1);
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--gradient-1) 0%, var(--gradient-5) 100%);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .success-message {
+            display: none;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--gradient-1) 0%, var(--gradient-3) 100%);
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .map-container {
+            margin-top: 60px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.15);
+            height: 450px;
+            border: 2px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .map-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-section {
+            padding: 100px 30px;
+            background: linear-gradient(180deg, #ffffff 0%, #f5f0ff 100%);
+        }
+
+        .gallery-masonry {
+            column-count: 3;
+            column-gap: 30px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            break-inside: avoid;
+            margin-bottom: 30px;
+            cursor: pointer;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            display: block;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.15);
+            transition: all 0.3s ease;
+            border: 2px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .gallery-item:hover img {
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.25);
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90vh;
+            border-radius: 12px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+        }
+
+        /* Legal Pages */
+        .legal-section {
+            padding: 140px 30px 80px;
+            max-width: 900px;
+            margin: 0 auto;
+            background: linear-gradient(180deg, #ffffff 0%, #f5f0ff 100%);
+        }
+
+        .legal-section h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--gradient-1) 0%, var(--gradient-3) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .legal-section .last-updated {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 40px;
+        }
+
+        .legal-section h2 {
+            font-size: 1.8rem;
+            margin: 40px 0 15px;
+            background: linear-gradient(135deg, var(--gradient-1) 0%, var(--gradient-4) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .legal-section p {
+            margin-bottom: 15px;
+            color: #4a5568;
+            line-height: 1.8;
+        }
+
+        .legal-section a {
+            color: var(--gradient-1);
+            text-decoration: none;
+        }
+
+        .legal-section a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer with gradient accents */
+        footer {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 80px 30px 40px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            background: linear-gradient(135deg, var(--gradient-1) 0%, var(--gradient-5) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .footer-brand p {
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-col a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-col a:hover {
+            color: var(--gradient-3);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-info {
+                gap: 30px;
+            }
+
+            .hero-trust {
+                gap: 40px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-masonry {
+                column-count: 2;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-logo {
+                width: 60px;
+                height: 60px;
+                left: 20px;
+                top: 20px;
+            }
+
+            nav ul {
+                gap: 20px;
+            }
+
+            nav a {
+                font-size: 0.85rem;
+            }
+
+            .claim-btn {
+                top: auto;
+                bottom: 20px;
+                font-size: 13px;
+                padding: 12px 24px;
+            }
+
+            .hero-section {
+                padding: 120px 20px 60px;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                text-align: center;
+            }
+
+            .hero-trust {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-masonry {
+                column-count: 1;
+            }
+
+            .services-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="claim-btn" onclick="navigateTo('contact')">Claim this site</button>
+
+    <!-- Logo in Top Left with Fallback -->
+    <div class="top-logo" id="top-logo-container">
+        <img id="top-logo" src="" alt="Logo" style="display: none;">
+        <div class="logo-fallback" id="logo-fallback">YB</div>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+            <li><a href="#" class="nav-link" data-page="services">Services</a></li>
+            <li><a href="#" class="nav-link" data-page="gallery">Gallery</a></li>
+            <li><a href="#" class="nav-link" data-page="reviews">Reviews</a></li>
+            <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HOME PAGE -->
+    <div id="home" class="page-section active">
+        <section class="hero-section">
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+            <div class="gradient-orb orb-3"></div>
+            
+            <div class="hero-container">
+                <h1 class="hero-value-prop">
+                    <span class="accent">Transform</span><span class="your">Your</span>
+                    <span class="gradient-text" id="hero-headline">Innovation</span>
+                </h1>
+
+                <div class="hero-subheadline">
+                    <span class="hero-business-name" id="business-name-sub">Your Business</span>
+                    <span id="hero-description">Welcome to a landmark where innovation meets inspiration</span>
+                </div>
+
+                <div class="hero-actions">
+                    <button class="btn-primary" onclick="navigateTo('contact')">Get Started Today</button>
+                    <button class="btn-secondary" onclick="navigateTo('services')">View Services</button>
+                </div>
+
+                <div class="hero-trust">
+                    <div class="trust-item">
+                        <div class="trust-number">10+</div>
+                        <div class="trust-label">Years Experience</div>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-number">500+</div>
+                        <div class="trust-label">Happy Clients</div>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-number">98%</div>
+                        <div class="trust-label">Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- SERVICES PAGE -->
+    <div id="services" class="page-section">
+        <div class="page-header">
+            <h1 class="page-title">Our Services</h1>
+            <p class="page-subtitle">Comprehensive solutions tailored to your unique needs and goals</p>
+        </div>
+        <section class="services-section">
+            <div class="services-grid" id="services-grid"></div>
+        </section>
+    </div>
+
+    <!-- GALLERY PAGE -->
+    <div id="gallery" class="page-section">
+        <div class="page-header">
+            <h1 class="page-title" id="gallery-title">Gallery</h1>
+            <p class="page-subtitle" id="gallery-subtitle">Explore our work</p>
+        </div>
+        <section class="gallery-section">
+            <div class="gallery-masonry" id="gallery-masonry"></div>
+        </section>
+        <div class="lightbox" id="lightbox">
+            <span class="lightbox-close">&times;</span>
+            <img id="lightbox-img" src="" alt="">
+        </div>
+    </div>
+
+    <!-- REVIEWS PAGE -->
+    <div id="reviews" class="page-section">
+        <div class="page-header">
+            <h1 class="page-title">Client Testimonials</h1>
+            <p class="page-subtitle">See what our happy customers have to say</p>
+        </div>
+        <section class="testimonials-section">
+            <div class="testimonials-grid" id="testimonials-grid"></div>
+        </section>
+    </div>
+
+    <!-- CONTACT PAGE -->
+    <div id="contact" class="page-section">
+        <div class="page-header">
+            <h1 class="page-title">Get In Touch</h1>
+            <p class="page-subtitle">Ready to transform your business? Let's start the conversation</p>
+        </div>
+        <section class="contact-section">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="info-item">
+                        <div class="info-label">📍 ADDRESS</div>
+                        <div class="info-value" id="contact-address">Address here</div>
+                    </div>
+                    <div class="info-item" id="phone-item" style="display: none;">
+                        <div class="info-label">📞 PHONE</div>
+                        <div class="info-value" id="contact-phone">—</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">📧 EMAIL</div>
+                        <div class="info-value">contact@business.com</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">🕐 BUSINESS HOURS</div>
+                        <div class="info-value">
+                            Monday - Friday: 9:00 AM - 6:00 PM<br>
+                            Saturday: 10:00 AM - 4:00 PM<br>
+                            Sunday: Closed
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <div class="success-message" id="success-message">
+                        ✓ Thank you! Your message has been sent successfully.
+                    </div>
+                    <form id="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Full Name *</label>
+                                <input type="text" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email Address *</label>
+                                <input type="email" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <input type="tel">
+                            </div>
+                            <div class="form-group">
+                                <label>Service Interest</label>
+                                <select>
+                                    <option value="">Select a service</option>
+                                    <option value="design">Premium Design</option>
+                                    <option value="optimization">Performance Optimization</option>
+                                    <option value="support">Ongoing Support</option>
+                                    <option value="marketing">Digital Marketing</option>
+                                    <option value="hosting">Security & Hosting</option>
+                                    <option value="consulting">Business Consulting</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Preferred Appointment Date</label>
+                            <input type="date">
+                        </div>
+                        <div class="form-group">
+                            <label>Your Message *</label>
+                            <textarea required placeholder="Tell us about your project or what you're looking for..."></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+            <div class="map-container">
+                <img id="map-image" src="" alt="Location Map">
+            </div>
+        </section>
+    </div>
+
+    <!-- PRIVACY POLICY PAGE -->
+    <div id="privacy" class="page-section">
+        <section class="legal-section">
+            <h1>Privacy Policy</h1>
+            <p class="last-updated">Last Updated: February 4, 2026</p>
+            <p>This Privacy Policy describes how we collect, use, and protect your personal information when you visit our website or use our services.</p>
+            <h2>Information We Collect</h2>
+            <p>We collect information you provide directly to us, such as when you fill out a contact form, subscribe to our newsletter, or communicate with us.</p>
+            <h2>How We Use Your Information</h2>
+            <p>We use the information we collect to provide, maintain, and improve our services, communicate with you, and protect against fraud.</p>
+            <h2>Information Sharing</h2>
+            <p>We do not sell, trade, or rent your personal information to third parties.</p>
+            <h2>Data Security</h2>
+            <p>We implement appropriate security measures to protect your personal information.</p>
+            <h2>Your Rights</h2>
+            <p>You have the right to access, correct, or delete your personal information.</p>
+            <h2>Contact Us</h2>
+            <p>If you have questions, please <a href="#" onclick="navigateTo('contact'); return false;">contact us</a>.</p>
+        </section>
+    </div>
+
+    <!-- TERMS OF SERVICE PAGE -->
+    <div id="terms" class="page-section">
+        <section class="legal-section">
+            <h1>Terms of Service</h1>
+            <p class="last-updated">Last Updated: February 4, 2026</p>
+            <p>Please read these Terms of Service carefully before using our website or services.</p>
+            <h2>Acceptance of Terms</h2>
+            <p>By accessing or using our website, you agree to be bound by these Terms of Service.</p>
+            <h2>Use of Services</h2>
+            <p>You may use our services only for lawful purposes and in accordance with these Terms.</p>
+            <h2>Intellectual Property</h2>
+            <p>All content on this website is the property of our company and is protected by copyright laws.</p>
+            <h2>Limitation of Liability</h2>
+            <p>We shall not be liable for any indirect, incidental, or consequential damages.</p>
+            <h2>Changes to Terms</h2>
+            <p>We reserve the right to modify these Terms at any time.</p>
+            <h2>Contact Information</h2>
+            <p>For questions, please <a href="#" onclick="navigateTo('contact'); return false;">contact us</a>.</p>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3 id="footer-name">Your Business</h3>
+                <p>Creating exceptional digital experiences that drive results and build lasting connections.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#" class="nav-link" data-page="home">Home</a></li>
+                    <li><a href="#" class="nav-link" data-page="services">Services</a></li>
+                    <li><a href="#" class="nav-link" data-page="gallery">Gallery</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#" class="nav-link" data-page="reviews">Reviews</a></li>
+                    <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#" class="nav-link" data-page="privacy">Privacy Policy</a></li>
+                    <li><a href="#" class="nav-link" data-page="terms">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 <span id="footer-name-2">Your Business</span>. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const businessData = {
+            card: {
+                variables: [
+                    {name: "business_name", value: "1600 Amphitheatre Pkwy"},
+                    {name: "business_logo", value: "https://img.freepik.com/free-vector/creative-letter-colorful-logo-design_474888-2534.jpg?semt=ais_hybrid&w=740&q=80"},
+                    {name: "logo_bg_color", value: "#FFFFFF"},
+                    {name: "business_tag", value: "Innovative Space at 1600 Amphitheatre Pkwy"},
+                    {name: "business_description", value: "Discover the iconic location of 1600 Amphitheatre Pkwy! Nestled in Mountain View, CA, this premise is renowned for its innovative spirit and technological advancements."},
+                    {name: "business_description_web", value: "Welcome to 1600 Amphitheatre Pkwy, a landmark in Mountain View, CA, where innovation meets inspiration."},
+                    {name: "cover_photo_url", value: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800"},
+                    {name: "address", value: "1600 Amphitheatre Pkwy, Mountain View, CA 94043, USA"},
+                    {name: "phone", value: ""},
+                    {name: "has_phone", value: false},
+                    {name: "rating", value: 0},
+                    {name: "total_reviews", value: 0},
+                    {name: "map_image_url", value: "https://maps.googleapis.com/maps/api/staticmap?size=800x400&zoom=15&maptype=roadmap&markers=color:red|1600+Amphitheatre+Pkwy,+Mountain+View,+CA+94043,+USA&key=AIzaSyCEELix93q2qcPNt23CR8ZOROiaMxSxkLM"},
+                    {name: "gallery_heading", value: "Innovation Hub"},
+                    {name: "gallery_subtitle", value: "A glimpse into creativity"},
+                    {name: "photos", value: [
+                        {url: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=800"},
+                        {url: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=600&h=400"},
+                        {url: "https://images.unsplash.com/photo-1497215842964-222b430dc094?w=600&h=900"}
+                    ]},
+                    {name: "reviews", value: [
+                        {rating: 5, text: "Outstanding service! They exceeded all expectations.", author: "Sarah Johnson", role: "CEO, TechStart"},
+                        {rating: 5, text: "Professional and responsive.", author: "Michael Chen", role: "Marketing Director"}
+                    ]}
+                ]
+            }
+        };
+
+        function getValue(name, defaultValue = '') {
+            const v = businessData.card.variables.find(i => i.name === name);
+            return v ? v.value : defaultValue;
+        }
+
+        function generateHeroCopy() {
+            const name = getValue('business_name');
+            const desc = getValue('business_description');
+            const descWeb = getValue('business_description_web');
+            const address = getValue('address');
+
+            let headline = 'Innovation';
+            if (desc.includes('quality') || desc.includes('premium')) headline = 'Excellence';
+            else if (desc.includes('service')) headline = 'Service';
+
+            let subDesc = descWeb || desc || 'Where excellence meets innovation';
+
+            let location = 'Your Location';
+            if (address) {
+                const parts = address.split(',');
+                if (parts.length >= 2) {
+                    location = parts[parts.length - 2].trim();
+                }
+            }
+
+            return { headline, businessName: name, description: subDesc, location };
+        }
+
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pages = document.querySelectorAll('.page-section');
+        
+        function navigateTo(pageId) {
+            pages.forEach(p => p.classList.remove('active'));
+            navLinks.forEach(l => l.classList.remove('active'));
+            
+            document.getElementById(pageId).classList.add('active');
+            const activeLink = document.querySelector(`[data-page="${pageId}"]`);
+            if (activeLink) activeLink.classList.add('active');
+            
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                navigateTo(link.dataset.page);
+            });
+        });
+
+        function loadData() {
+            const name = getValue('business_name');
+            const logo = getValue('business_logo');
+            const logoBg = getValue('logo_bg_color');
+            const address = getValue('address');
+            const phone = getValue('phone');
+            const hasPhone = getValue('has_phone');
+            const rating = getValue('rating');
+            const totalReviews = getValue('total_reviews');
+            const mapUrl = getValue('map_image_url');
+            const photos = getValue('photos', []);
+            const reviews = getValue('reviews', []);
+
+            const heroCopy = generateHeroCopy();
+            
+            // Logo - show image if available, otherwise show initials
+            const logoContainer = document.getElementById('top-logo-container');
+            const logoFallback = document.getElementById('logo-fallback');
+            
+            if (logo) {
+                const logoImg = document.getElementById('top-logo');
+                logoImg.src = logo;
+                logoImg.style.display = 'block';
+                logoFallback.style.display = 'none';
+            } else {
+                // Generate initials from business name
+                const initials = name.split(' ')
+                    .map(word => word.charAt(0).toUpperCase())
+                    .slice(0, 2)
+                    .join('');
+                logoFallback.textContent = initials || 'BZ';
+                logoFallback.style.display = 'block';
+            }
+
+            // Hero content
+            document.getElementById('hero-headline').textContent = heroCopy.headline;
+            document.getElementById('business-name-sub').textContent = heroCopy.businessName;
+            document.getElementById('hero-description').textContent = heroCopy.description;
+
+            // Names
+            document.getElementById('footer-name').textContent = name;
+            document.getElementById('footer-name-2').textContent = name;
+            document.getElementById('page-title').textContent = name;
+
+            // Contact
+            if (address) {
+                document.getElementById('contact-address').innerHTML = address.replace(/,/g, '<br>');
+            }
+            if (hasPhone && phone) {
+                document.getElementById('phone-item').style.display = 'block';
+                document.getElementById('contact-phone').textContent = phone;
+            }
+            if (mapUrl) {
+                document.getElementById('map-image').src = mapUrl;
+            }
+
+            // Gallery
+            document.getElementById('gallery-title').textContent = getValue('gallery_heading', 'Gallery');
+            document.getElementById('gallery-subtitle').textContent = getValue('gallery_subtitle', 'Our work');
+            loadGallery(photos);
+
+            loadServices();
+            loadTestimonials(reviews);
+        }
+
+        function loadGallery(photos) {
+            const gallery = document.getElementById('gallery-masonry');
+            const defaultPhotos = [
+                'https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=800',
+                'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=600&h=400',
+                'https://images.unsplash.com/photo-1497215842964-222b430dc094?w=600&h=900',
+                'https://images.unsplash.com/photo-1556761175-4b46a572b786?w=600&h=700',
+                'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&h=500',
+                'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&h=800'
+            ];
+
+            const imagesToShow = photos.length > 0 ? photos : defaultPhotos.map(url => ({url}));
+
+            imagesToShow.forEach(photo => {
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+                item.innerHTML = `<img src="${photo.url || photo}" alt="Gallery">`;
+                item.onclick = () => {
+                    document.getElementById('lightbox-img').src = photo.url || photo;
+                    document.getElementById('lightbox').classList.add('active');
+                };
+                gallery.appendChild(item);
+            });
+
+            document.getElementById('lightbox').onclick = function(e) {
+                if (e.target === this || e.target.classList.contains('lightbox-close')) {
+                    this.classList.remove('active');
+                }
+            };
+        }
+
+        function loadServices() {
+            const services = [
+                {title: 'Premium Design', desc: 'Custom-crafted designs that perfectly represent your brand and captivate your audience.', features: ['Custom visual identity', 'Responsive design', 'Brand consistency', 'User-focused layouts']},
+                {title: 'Performance Optimization', desc: 'Lightning-fast loading speeds and seamless user experiences across all devices.', features: ['Speed optimization', 'Mobile optimization', 'SEO enhancement', 'Analytics integration']},
+                {title: 'Ongoing Support', desc: 'Dedicated support and maintenance to keep your digital presence running smoothly.', features: ['24/7 monitoring', 'Regular updates', 'Security patches', 'Technical support']},
+                {title: 'Digital Marketing', desc: 'Strategic marketing solutions to grow your online presence and reach your target audience.', features: ['Social media strategy', 'Content marketing', 'Email campaigns', 'PPC advertising']},
+                {title: 'Security & Hosting', desc: 'Enterprise-grade security and reliable hosting infrastructure for peace of mind.', features: ['SSL certificates', 'Daily backups', 'DDoS protection', '99.9% uptime guarantee']},
+                {title: 'Business Consulting', desc: 'Expert guidance to help you make informed decisions about your digital strategy.', features: ['Strategy planning', 'Competitor analysis', 'ROI optimization', 'Growth roadmaps']}
+            ];
+
+            const grid = document.getElementById('services-grid');
+            services.forEach(service => {
+                const card = document.createElement('div');
+                card.className = 'service-card';
+                card.innerHTML = `
+                    <h3 class="service-title">${service.title}</h3>
+                    <p class="service-description">${service.desc}</p>
+                    <ul class="service-features">
+                        ${service.features.map(f => `<li>${f}</li>`).join('')}
+                    </ul>
+                    <a href="#" class="service-cta" onclick="event.preventDefault(); navigateTo('contact');">Learn More</a>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function loadTestimonials(reviews) {
+            const defaultReviews = [
+                {rating: 5, text: "Outstanding service! They exceeded all our expectations and delivered a website that perfectly represents our brand.", author: "Sarah Johnson", role: "CEO, TechStart"},
+                {rating: 5, text: "Professional, creative, and incredibly responsive. Our new website has dramatically increased our online presence.", author: "Michael Chen", role: "Marketing Director"},
+                {rating: 5, text: "The attention to detail and commitment to quality is remarkable. Highly recommend for anyone serious about their digital presence.", author: "Emily Rodriguez", role: "Business Owner"}
+            ];
+
+            const grid = document.getElementById('testimonials-grid');
+            const reviewsToShow = reviews.length > 0 ? reviews : defaultReviews;
+
+            reviewsToShow.forEach(review => {
+                const stars = '⭐'.repeat(Math.round(review.rating || 5));
+                const card = document.createElement('div');
+                card.className = 'testimonial-card';
+                card.innerHTML = `
+                    <div class="stars">${stars}</div>
+                    <p class="testimonial-text">"${review.text}"</p>
+                    <div class="testimonial-author">${review.author || review.name}</div>
+                    ${review.role ? `<div class="testimonial-role">${review.role}</div>` : ''}
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        document.getElementById('contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            document.getElementById('success-message').style.display = 'block';
+            e.target.reset();
+            setTimeout(() => {
+                document.getElementById('success-message').style.display = 'none';
+            }, 5000);
+        });
+
+        window.addEventListener('DOMContentLoaded', loadData);
+
+        window.loadBusinessData = function(data) {
+            Object.assign(businessData, data);
+            location.reload();
+        };
+    </script>
+
+</body>
+</html>
